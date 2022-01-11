@@ -1,7 +1,14 @@
-<!--<h1>Books#new</h1>-->
-<!--<p>Find me in app/views/books/new.html.erb</p>-->
 
 <h1>New book</h1>
+
+<% if @book.errors.any? %>
+ <%= @book.errors.count %> error prohibited this book from being saved:
+ <ul>
+   <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+   <% end %>
+ </ul>
+<% end %>
 
 <%= form_with model: @book,　url: '/books', method: :post, local: true do |f| %>
  <h4>Title</h4>
